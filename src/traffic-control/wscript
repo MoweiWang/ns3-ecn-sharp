@@ -21,6 +21,7 @@ def build(bld):
       'model/pie-queue-disc.cc',
       'model/tcn-queue-disc.cc',
       'model/delay-queue-disc.cc',
+      'model/buffershare-queue-disc.cc',
       'helper/traffic-control-helper.cc',
       'helper/queue-disc-container.cc'
         ]
@@ -46,6 +47,7 @@ def build(bld):
       'model/pie-queue-disc.h',
       'model/tcn-queue-disc.h',
       'model/delay-queue-disc.h',
+      'model/buffershare-queue-disc.h',
       'helper/traffic-control-helper.h',
       'helper/queue-disc-container.h'
         ]

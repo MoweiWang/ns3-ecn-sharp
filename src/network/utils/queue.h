@@ -166,6 +166,11 @@ public:
    */
   uint32_t GetMaxBytes (void) const;
 
+  // sijiang
+  void SetThreshold(uint32_t size);
+
+  uint32_t GetThreshold(void) const;
+
 #if 0
   // average calculation requires keeping around
   // a buffer with the date of arrival of past received packets

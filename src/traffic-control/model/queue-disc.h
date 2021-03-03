@@ -274,6 +274,20 @@ public:
    */
   uint32_t GetTotalRequeuedBytes (void) const;
 
+  /** sijiang
+   * SetThreshold and Getthreshold.
+   */
+  uint32_t GetThreshold(void) const;
+  bool SetThreshold(uint32_t size);
+
+  /** 20191022 sijiang
+   * Total Buffer Control
+   * */
+    bool SetTotalBufferSize(uint32_t size);
+    uint32_t GetTotalBufferSize(void);
+    bool SetTotalBufferUse(uint32_t size);
+    uint32_t GetTotalBufferUse(void);
+
   /**
    * \brief Set the NetDevice on which this queue discipline is installed.
    * \param device the NetDevice on which this queue discipline is installed.
@@ -542,6 +556,12 @@ private:
   TracedCallback<Ptr<const QueueItem> > m_traceRequeue;
   /// Traced callback: fired when a packet is dropped
   TracedCallback<Ptr<const QueueItem> > m_traceDrop;
+      /** 20191022 by sijiang 
+  * set a new static variables: TotalBufferUse, TotalBufferSize
+  * that can change whenever total buffer use in all ports changes
+  */
+  static uint32_t TotalBufferUse;
+  static uint32_t TotalBufferSize;
 };
 
 } // namespace ns3

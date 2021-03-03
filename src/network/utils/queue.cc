@@ -330,4 +330,26 @@ Queue::Drop (Ptr<Packet> p)
   m_traceDrop (p);
 }
 
+//sijiang 20190920 thershold
+void
+Queue::SetThreshold(uint32_t maxBytes)
+{
+  NS_LOG_FUNCTION (this << maxBytes);
+
+  // do nothing if the size is null
+  /*if (!size.GetValue ())
+    {
+      return;
+    }
+    */
+  m_maxBytes = maxBytes;
+}
+
+uint32_t
+Queue::GetThreshold (void) const
+{
+  NS_LOG_FUNCTION (this);
+  return m_maxBytes;
+}
+
 } // namespace ns3

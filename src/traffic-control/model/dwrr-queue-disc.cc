@@ -63,6 +63,13 @@ DWRRQueueDisc::AddDWRRClass (Ptr<QueueDisc> qdisc, int32_t cl, uint32_t priority
     m_DWRRs[cl] = dwrrClass;
 }
 
+Ptr<QueueDisc>
+DWRRQueueDisc::GetDWRRQueueDisc(int32_t cl)
+{    
+    Ptr<DWRRClass> dwrrclass = m_DWRRs[cl];  
+    return dwrrclass->qdisc;
+}
+
 bool
 DWRRQueueDisc::DoEnqueue (Ptr<QueueDiscItem> item)
 {

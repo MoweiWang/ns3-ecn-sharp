@@ -33,7 +33,7 @@ public:
 
     void AddDWRRClass (Ptr<QueueDisc> qdisc, int32_t cl, uint32_t quantum);
     void AddDWRRClass (Ptr<QueueDisc> qdisc, int32_t cl, uint32_t priority, uint32_t quantum);
-
+    Ptr<QueueDisc> GetDWRRQueueDisc(int32_t cl);
 private:
     // Operations offered by multi queue disc should be the same as queue disc
     virtual bool DoEnqueue (Ptr<QueueDiscItem> item);

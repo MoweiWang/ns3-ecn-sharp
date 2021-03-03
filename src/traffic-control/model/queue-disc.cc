@@ -596,5 +596,59 @@ QueueDisc::Transmit (Ptr<QueueDiscItem> item)
 
   return ret;
 }
+  //sijiang 20190920 add Get and Set Threshold
+  uint32_t
+  QueueDisc::GetThreshold(void) const
+  {
+    NS_LOG_FUNCTION(this);
+    if (GetNInternalQueues())
+    {
+      return GetInternalQueue(0)->GetThreshold();
+    }
+    return 0;
+  }
 
+  bool QueueDisc::SetThreshold(uint32_t size)
+  {
+    NS_LOG_FUNCTION(this << size);
+    if (GetNInternalQueues())
+    {
+      GetInternalQueue(0)->SetThreshold(size);
+    }
+    return true;
+  }
+
+  // 20191022 by sijiang
+  // add Total buffer control
+
+  uint32_t QueueDisc::TotalBufferSize = 6291456;
+  uint32_t QueueDisc::TotalBufferUse = 0;
+
+  bool QueueDisc::SetTotalBufferSize(uint32_t size)
+  {
+    TotalBufferSize = size;
+    return true;
+  }
+
+  bool QueueDisc::SetTotalBufferUse(uint32_t size)
+  {
+    if (size > TotalBufferSize)
+    {
+      return false;
+    }
+    TotalBufferUse = size;
+    return true;
+  }
+
+  uint32_t
+  QueueDisc::GetTotalBufferUse(void)
+  {
+    return TotalBufferUse;
+  }
+
+  uint32_t
+  QueueDisc::GetTotalBufferSize(void)
+  {
+    return TotalBufferSize;
+  }
 } // namespace ns3
